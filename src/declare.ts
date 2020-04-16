@@ -4,6 +4,14 @@
  * @description Declare
  */
 
+export const createCoordinate = (latitude: number, longitude: number): Coordinate => {
+
+    return {
+        latitude,
+        longitude,
+    };
+};
+
 export type Coordinate = {
 
     readonly latitude: number;
