@@ -4,11 +4,17 @@
  * @description Calculate
  */
 
-import { Coordinate } from "./declare";
+import { Coordinate, GetCoordinateFunction } from "./declare";
 
 type NearestCoordinateStatus = {
 
     readonly coordinate: Coordinate | null;
+    readonly distance: number;
+};
+
+type NearestObjectStatus<T> = {
+
+    readonly object: T | null;
     readonly distance: number;
 };
 
@@ -37,6 +43,38 @@ export const getNearestCoordinateByLinearDistance = (start: Coordinate, destinat
 
     return reduced.coordinate;
 };
+
+export const getNearestObjectByLinearDistance = <T extends any>(
+    start: Coordinate,
+    objects: T[],
+    getCoordinateFunction: GetCoordinateFunction<T>,
+): T | null => {
+
+    if (objects.length === 0) {
+        return null;
+    }
+
+    const reduced: NearestObjectStatus<T> = objects.reduce<NearestObjectStatus<T>>(
+        (previous: NearestObjectStatus<T>, current: T): NearestObjectStatus<T> => {
+
+            const coordinate: Coordinate = getCoordinateFunction(current);
+            const distance: number = calculateLinearDistance(start, coordinate);
+            if (distance < previous.distance) {
+                return {
+                    object: current,
+                    distance,
+                };
+            }
+            return previous;
+        }, {
+            object: null,
+            distance: Infinity,
+        } as NearestObjectStatus<T>,
+    );
+
+    return reduced.object;
+};
+
 
 export const calculateLinearDistance = (start: Coordinate, end: Coordinate): number => {
 

@@ -17,3 +17,5 @@ export type Coordinate = {
     readonly latitude: number;
     readonly longitude: number;
 };
+
+export type GetCoordinateFunction<T extends any> = (object: T) => Coordinate;

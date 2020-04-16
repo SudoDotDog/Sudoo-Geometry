@@ -4,8 +4,9 @@
  * @description Arrange
  */
 
-import { getNearestCoordinateByLinearDistance } from "./calculate";
-import { Coordinate } from "./declare";
+import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "./calculate";
+import { Coordinate, GetCoordinateFunction } from "./declare";
+
 
 export const arrangeCoordinateByLinearDistance = (start: Coordinate, destinations: Coordinate[]): Coordinate[] => {
 
@@ -20,6 +21,30 @@ export const arrangeCoordinateByLinearDistance = (start: Coordinate, destination
         if (next !== null) {
             result.push(next);
             destinationsSet.delete(next);
+        } else {
+            return result;
+        }
+    }
+    return result;
+};
+
+export const arrangeObjectByLinearDistance = <T extends any>(
+    start: Coordinate,
+    objects: T[],
+    getCoordinateFunction: GetCoordinateFunction<T>,
+): T[] => {
+
+    const objectSet: Set<T> = new Set(objects);
+    const result: T[] = [];
+
+    while (objectSet.size > 0) {
+
+        const currentStart: Coordinate = result.length === 0 ? start : getCoordinateFunction(result[result.length - 1]);
+        const next: T | null = getNearestObjectByLinearDistance(currentStart, [...objectSet], getCoordinateFunction);
+
+        if (next !== null) {
+            result.push(next);
+            objectSet.delete(next);
         } else {
             return result;
         }
