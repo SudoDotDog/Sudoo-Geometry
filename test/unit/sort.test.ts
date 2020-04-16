@@ -7,7 +7,7 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { Coordinate, createCoordinate, sortCoordinateByLinearDistance, sortObjectByLinearDistance } from "../../src";
+import { Coordinate, createCoordinate, sortCoordinateByLinearDistance, sortCoordinateByLinearDistanceWithCache, sortObjectByLinearDistance, sortObjectByLinearDistanceWithCache } from "../../src";
 import { createMockObject, MockObject } from "../mock/object";
 
 describe('Given [Sort] helper functions', (): void => {
@@ -63,6 +63,50 @@ describe('Given [Sort] helper functions', (): void => {
         ];
 
         const result: MockObject[] = sortObjectByLinearDistance(start, destinations, (each: MockObject) => each.value);
+
+        expect(result).to.be.deep.equal([
+            destinations[2],
+            destinations[4],
+            destinations[0],
+            destinations[3],
+            destinations[1],
+        ]);
+    });
+
+    it('should be able to sort by linear distance with cache', (): void => {
+
+        const start: Coordinate = createCoordinate(0, 0);
+        const destinations: Coordinate[] = [
+            createCoordinate(1, 1),
+            createCoordinate(5, 3),
+            createCoordinate(0, 0),
+            createCoordinate(2, 1),
+            createCoordinate(0, -1),
+        ];
+
+        const result: Coordinate[] = sortCoordinateByLinearDistanceWithCache(start, destinations);
+
+        expect(result).to.be.deep.equal([
+            destinations[2],
+            destinations[4],
+            destinations[0],
+            destinations[3],
+            destinations[1],
+        ]);
+    });
+
+    it('should be able to sort object by linear distance with cache', (): void => {
+
+        const start: Coordinate = createCoordinate(0, 0);
+        const destinations: MockObject[] = [
+            createMockObject(1, 1),
+            createMockObject(5, 3),
+            createMockObject(0, 0),
+            createMockObject(2, 1),
+            createMockObject(0, -1),
+        ];
+
+        const result: MockObject[] = sortObjectByLinearDistanceWithCache(start, destinations, (each: MockObject) => each.value);
 
         expect(result).to.be.deep.equal([
             destinations[2],
