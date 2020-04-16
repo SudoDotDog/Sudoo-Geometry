@@ -7,19 +7,46 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { calculateLinearDistance, Coordinate, createCoordinate } from "../../src";
+import { Coordinate, createCoordinate, sortCoordinateByLinearDistance } from "../../src";
 
 describe('Given [Sort] helper functions', (): void => {
 
     const chance: Chance.Chance = new Chance('geometry-sort');
 
-    it('should be able to calculate linear distance', (): void => {
+    it('should be able to sort by linear distance', (): void => {
 
-        const from: Coordinate = createCoordinate(1, 1);
-        const to: Coordinate = createCoordinate(4, 5);
+        const start: Coordinate = createCoordinate(0, 0);
+        const destinations: Coordinate[] = [
+            createCoordinate(1, 1),
+            createCoordinate(5, 3),
+            createCoordinate(0, 0),
+            createCoordinate(2, 1),
+            createCoordinate(0, -1),
+        ];
 
-        const distance: number = calculateLinearDistance(from, to);
+        const result: Coordinate[] = sortCoordinateByLinearDistance(start, destinations);
 
-        expect(distance).to.be.equal(5);
+        expect(result).to.be.deep.equal([
+            destinations[2],
+            destinations[4],
+            destinations[0],
+            destinations[3],
+            destinations[1],
+        ]);
+    });
+
+    it('should be able to not mutate original', (): void => {
+
+        const start: Coordinate = createCoordinate(0, 0);
+        const destinations: Coordinate[] = [
+            createCoordinate(1, 1),
+            createCoordinate(5, 3),
+            createCoordinate(0, 0),
+            createCoordinate(2, 1),
+            createCoordinate(0, -1),
+        ];
+
+        sortCoordinateByLinearDistance(start, destinations);
+        expect(destinations).to.be.deep.equal(destinations);
     });
 });
