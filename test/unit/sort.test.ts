@@ -35,7 +35,7 @@ describe('Given [Sort] helper functions', (): void => {
         ]);
     });
 
-    it('should be able to not mutate original', (): void => {
+    it('sort should not mutate original', (): void => {
 
         const start: Coordinate = createCoordinate(0, 0);
         const destinations: Coordinate[] = [
