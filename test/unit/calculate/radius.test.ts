@@ -21,6 +21,7 @@ describe('Given [Calculate-Radius] helper functions', (): void => {
 
         const distance: number = calculateRadiusDistance(from, to);
 
-        expect(distance).to.be.equal(5);
+        // tslint:disable-next-line: no-magic-numbers
+        expect(distance).to.be.equal(556.217);
     });
 });

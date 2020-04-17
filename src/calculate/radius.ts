@@ -14,7 +14,7 @@ export const calculateRadiusRange = (distance: number): number => {
     return (distance * Math.PI) / ANGLE;
 };
 
-export const calculateRadiusDistance = (from: Coordinate, to: Coordinate): number => {
+export const calculateRadiusDistance = (from: Coordinate, to: Coordinate, precision: number = 3): number => {
 
     const radiusFromLatitude: number = calculateRadiusRange(from.latitude);
     const radiusFromLongitude: number = calculateRadiusRange(from.longitude);
@@ -25,9 +25,17 @@ export const calculateRadiusDistance = (from: Coordinate, to: Coordinate): numbe
     const radiusLatitudeDifference: number = radiusFromLatitude - radiusToLatitude;
     const radiusLongitudeDifference: number = radiusFromLongitude - radiusToLongitude;
 
-    const radiusCombinedDifference: number = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(radiusLatitudeDifference / 2), 2) +
-        Math.cos(radiusFromLatitude) * Math.cos(radiusToLatitude) * Math.pow(Math.sin(radiusLongitudeDifference / 2), 2)));
+    const latitudeDifference: number = Math.pow(Math.sin(radiusLatitudeDifference / 2), 2);
+    const longitudeDifference: number = Math.pow(Math.sin(radiusLongitudeDifference / 2), 2);
+
+    const extensionDifference: number = Math.cos(radiusFromLatitude) * Math.cos(radiusToLatitude);
+
+    const radiusCombinedDifference: number = 2 * Math.asin(Math.sqrt(latitudeDifference + extensionDifference * longitudeDifference));
 
     const curvedDistance: number = radiusCombinedDifference * EARTH_RADIUS;
-    return curvedDistance;
+
+    const roundPrecision: number = Math.pow(10, precision);
+    const rounded: number = Math.round(curvedDistance * roundPrecision) / roundPrecision;
+
+    return rounded;
 };
