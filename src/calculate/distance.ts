@@ -1,10 +1,10 @@
 /**
  * @author WMXPY
- * @namespace Geometry
- * @description Calculate
+ * @namespace Geometry_Calculate
+ * @description Distance
  */
 
-import { Coordinate, GetCoordinateFunction } from "./declare";
+import { Coordinate, GetCoordinateFunction } from "../declare";
 
 type NearestCoordinateStatus = {
 

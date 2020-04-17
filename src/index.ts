@@ -6,7 +6,7 @@
 
 export * from "./arrange/coordinate";
 export * from "./arrange/planning";
-export * from "./calculate";
+export * from "./calculate/distance";
 export * from "./declare";
-export * from "./sort";
+export * from "./sort/sort";
 

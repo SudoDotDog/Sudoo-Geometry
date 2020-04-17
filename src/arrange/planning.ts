@@ -4,7 +4,7 @@
  * @description Planning
  */
 
-import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "../calculate";
+import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "../calculate/distance";
 import { Coordinate, GetCoordinateFunction } from "../declare";
 
 export type PlanningResult = {

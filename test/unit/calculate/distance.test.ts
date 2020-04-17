@@ -1,17 +1,17 @@
 /**
  * @author WMXPY
- * @namespace Geometry
- * @description Calculate
+ * @namespace Geometry_Calculate
+ * @description Distance
  * @override Unit Test
  */
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { calculateLinearDistance, Coordinate, createCoordinate, getNearestCoordinateByLinearDistance } from "../../src";
+import { calculateLinearDistance, Coordinate, createCoordinate, getNearestCoordinateByLinearDistance } from "../../../src";
 
-describe('Given [Calculate] helper functions', (): void => {
+describe('Given [Calculate-Distance] helper functions', (): void => {
 
-    const chance: Chance.Chance = new Chance('geometry-calculate');
+    const chance: Chance.Chance = new Chance('geometry-calculate-distance');
 
     it('should be able to calculate linear distance', (): void => {
 

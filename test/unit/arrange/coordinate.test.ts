@@ -10,9 +10,9 @@ import * as Chance from "chance";
 import { arrangeCoordinateByLinearDistance, arrangeObjectByLinearDistance, Coordinate, createCoordinate } from "../../../src";
 import { createMockObject, MockObject } from "../../mock/object";
 
-describe('Given [Arrange] helper functions', (): void => {
+describe('Given [Arrange-Coordinate] helper functions', (): void => {
 
-    const chance: Chance.Chance = new Chance('geometry-arrange');
+    const chance: Chance.Chance = new Chance('geometry-arrange-coordinate');
 
     it('should be able to arrange coordinate by distance', (): void => {
 

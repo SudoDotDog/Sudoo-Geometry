@@ -1,18 +1,18 @@
 /**
  * @author WMXPY
- * @namespace Geometry
+ * @namespace Geometry_Sort
  * @description Sort
  * @override Unit Test
  */
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { Coordinate, createCoordinate, sortCoordinateByLinearDistance, sortCoordinateByLinearDistanceWithCache, sortObjectByLinearDistance, sortObjectByLinearDistanceWithCache } from "../../src";
-import { createMockObject, MockObject } from "../mock/object";
+import { Coordinate, createCoordinate, sortCoordinateByLinearDistance, sortCoordinateByLinearDistanceWithCache, sortObjectByLinearDistance, sortObjectByLinearDistanceWithCache } from "../../../src";
+import { createMockObject, MockObject } from "../../mock/object";
 
-describe('Given [Sort] helper functions', (): void => {
+describe('Given [Sort-Sort] helper functions', (): void => {
 
-    const chance: Chance.Chance = new Chance('geometry-sort');
+    const chance: Chance.Chance = new Chance('geometry-sort-sort');
 
     it('should be able to sort by linear distance', (): void => {
 

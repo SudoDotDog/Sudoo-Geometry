@@ -1,11 +1,11 @@
 /**
  * @author WMXPY
- * @namespace Geometry
+ * @namespace Geometry_Sort
  * @description Sort
  */
 
-import { calculateLinearDistance, calculateLinearDistanceWithCache } from "./calculate";
-import { Coordinate, GetCoordinateFunction } from "./declare";
+import { calculateLinearDistance, calculateLinearDistanceWithCache } from "../calculate/distance";
+import { Coordinate, GetCoordinateFunction } from "../declare";
 
 export const sortCoordinateByLinearDistance = (start: Coordinate, destinations: Coordinate[]): Coordinate[] => {
 
