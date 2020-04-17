@@ -4,7 +4,7 @@
  * @description Index
  */
 
-export * from "./arrange";
+export * from "./arrange/coordinate";
 export * from "./calculate";
 export * from "./declare";
 export * from "./sort";

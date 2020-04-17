@@ -7,8 +7,8 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { arrangeCoordinateByLinearDistance, arrangeObjectByLinearDistance, Coordinate, createCoordinate } from "../../src";
-import { createMockObject, MockObject } from "../mock/object";
+import { arrangeCoordinateByLinearDistance, arrangeObjectByLinearDistance, Coordinate, createCoordinate } from "../../../src";
+import { createMockObject, MockObject } from "../../mock/object";
 
 describe('Given [Arrange] helper functions', (): void => {
 

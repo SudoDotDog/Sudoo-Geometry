@@ -1,11 +1,11 @@
 /**
  * @author WMXPY
- * @namespace Geometry
- * @description Arrange
+ * @namespace Geometry_Arrange
+ * @description Coordinate
  */
 
-import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "./calculate";
-import { Coordinate, GetCoordinateFunction } from "./declare";
+import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "../calculate";
+import { Coordinate, GetCoordinateFunction } from "../declare";
 
 export const arrangeCoordinateByLinearDistance = (start: Coordinate, destinations: Coordinate[]): Coordinate[] => {
 
