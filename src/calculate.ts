@@ -75,7 +75,6 @@ export const getNearestObjectByLinearDistance = <T extends any>(
     return reduced.object;
 };
 
-
 export const calculateLinearDistance = (start: Coordinate, end: Coordinate): number => {
 
     const latitudeDifference: number = Math.abs(start.latitude - end.latitude);
