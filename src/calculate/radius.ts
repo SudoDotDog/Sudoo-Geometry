@@ -40,7 +40,7 @@ export const calculateRadiusDistance = (from: Coordinate, to: Coordinate, precis
     return rounded;
 };
 
-export const calculateRadiusDistanceInMeter = (from: Coordinate, to: Coordinate, precision: number = 3): number => {
+export const calculateRadiusDistanceInMeter = (from: Coordinate, to: Coordinate, precision: number = 2): number => {
 
     const distanceInKilometer: number = calculateRadiusDistance(from, to, 3 + precision);
     const distanceInMeter: number = distanceInKilometer * 1000;

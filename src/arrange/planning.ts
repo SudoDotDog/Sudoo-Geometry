@@ -5,6 +5,7 @@
  */
 
 import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "../calculate/distance";
+import { calculateRadiusDistanceInMeter } from "../calculate/radius";
 import { Coordinate, GetCoordinateFunction } from "../declare";
 
 export type PlanningResult = {
@@ -30,8 +31,10 @@ export const arrangePlannedCoordinateByLinearDistance = (start: Coordinate, dest
         const next: Coordinate | null = getNearestCoordinateByLinearDistance(currentStart, [...destinationsSet]);
 
         if (next !== null) {
+
+            const physicalDistance: number = calculateRadiusDistanceInMeter(currentStart, next);
             result.push({
-                distance: 0,
+                distance: physicalDistance,
                 coordinate: next,
             });
             destinationsSet.delete(next);
@@ -57,8 +60,10 @@ export const arrangePlannedObjectByLinearDistance = <T extends any>(
         const next: T | null = getNearestObjectByLinearDistance(currentStart, [...objectSet], getCoordinateFunction);
 
         if (next !== null) {
+
+            const physicalDistance: number = calculateRadiusDistanceInMeter(currentStart, getCoordinateFunction(next));
             result.push({
-                distance: 0,
+                distance: physicalDistance,
                 object: next,
             });
             objectSet.delete(next);
