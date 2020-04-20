@@ -12,6 +12,30 @@ export const createCoordinate = (latitude: number, longitude: number): Coordinat
     };
 };
 
+export const createLatLng = (latitude: number, longitude: number): LatLng => {
+
+    return {
+        lat: latitude,
+        lng: longitude,
+    };
+};
+
+export const covertCoordinateToLatLng = (coordinate: Coordinate): LatLng => {
+
+    return {
+        lat: coordinate.latitude,
+        lng: coordinate.longitude,
+    };
+};
+
+export const covertLatLngToCoordinate = (latLng: LatLng): Coordinate => {
+
+    return {
+        latitude: latLng.lat,
+        longitude: latLng.lng,
+    };
+};
+
 export type Coordinate = {
 
     readonly latitude: number;
