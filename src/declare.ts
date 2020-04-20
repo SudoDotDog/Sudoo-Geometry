@@ -36,6 +36,36 @@ export const covertLatLngToCoordinate = (latLng: LatLng): Coordinate => {
     };
 };
 
+export const convertLatitudeToString = (latitude: number): string => {
+
+    if (latitude >= 0) {
+        return `${latitude}N`;
+    }
+    return `${Math.abs(latitude)}S`;
+};
+
+export const convertLongitudeToString = (longitude: number): string => {
+
+    if (longitude >= 0) {
+        return `${longitude}E`;
+    }
+    return `${Math.abs(longitude)}W`;
+};
+
+export const convertCoordinateToString = (coordinate: Coordinate): string => {
+
+    const latitude: string = convertLatitudeToString(coordinate.latitude);
+    const longitude: string = convertLongitudeToString(coordinate.longitude);
+    return `${latitude}:${longitude}`;
+};
+
+export const convertLatLngToString = (latLng: LatLng): string => {
+
+    const latitude: string = convertLatitudeToString(latLng.lat);
+    const longitude: string = convertLongitudeToString(latLng.lng);
+    return `${latitude}:${longitude}`;
+};
+
 export type Coordinate = {
 
     readonly latitude: number;
