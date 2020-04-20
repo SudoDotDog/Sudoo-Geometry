@@ -7,8 +7,8 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { Coordinate, createCoordinate } from "../../../src";
-import { CoordinateGroup, groupCoordinates } from "../../../src/analysis/group";
+import { Coordinate, createCoordinate, groupCoordinatesByLinearDistance, GroupedCoordinates, GroupedObjects, groupObjectsByLinearDistance } from "../../../src";
+import { createMockObject, MockObject } from "../../mock/object";
 
 describe('Given [Analysis-Group] helper functions', (): void => {
 
@@ -24,7 +24,21 @@ describe('Given [Analysis-Group] helper functions', (): void => {
             createCoordinate(1, 4),
         ];
 
-        const result: CoordinateGroup[] = groupCoordinates(coordinates, 1);
+        const result: GroupedCoordinates[] = groupCoordinatesByLinearDistance(coordinates, 1);
+        expect(result).to.be.lengthOf(3);
+    });
+
+    it('should be able to group objects', (): void => {
+
+        const objects: MockObject[] = [
+            createMockObject(1, 1),
+            createMockObject(0, 1),
+            createMockObject(1, 0),
+            createMockObject(2, 2),
+            createMockObject(1, 4),
+        ];
+
+        const result: Array<GroupedObjects<MockObject>> = groupObjectsByLinearDistance(objects, (each: MockObject) => each.value, 1);
         expect(result).to.be.lengthOf(3);
     });
 });
