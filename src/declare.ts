@@ -18,4 +18,10 @@ export type Coordinate = {
     readonly longitude: number;
 };
 
+export type LatLng = {
+
+    readonly lat: number;
+    readonly lng: number;
+};
+
 export type GetCoordinateFunction<T extends any> = (object: T) => Coordinate;
