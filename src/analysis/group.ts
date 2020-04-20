@@ -4,17 +4,19 @@
  * @description Group
  */
 
-import { calculateLinearDistance, calculateLinearDistanceWithCache } from "../calculate/distance";
-import { Coordinate, GetCoordinateFunction } from "../declare";
+import { calculateLinearDistance } from "../calculate/distance";
+import { convertCoordinateToString, Coordinate, GetCoordinateFunction } from "../declare";
 
 export type GroupedCoordinates = {
 
+    readonly key: string;
     readonly center: Coordinate;
     readonly coordinates: Coordinate[];
 };
 
 export type GroupedObjects<T> = {
 
+    readonly key: string;
     readonly center: Coordinate;
     readonly objects: T[];
 };
@@ -38,11 +40,13 @@ export const groupCoordinatesByLinearDistance = (coordinates: Coordinate[], rang
     }
 
     const result: GroupedCoordinates[] = [];
-    for (const key of groups.keys()) {
+    for (const center of groups.keys()) {
 
+        const key: string = convertCoordinateToString(center);
         result.push({
-            center: key,
-            coordinates: groups.get(key) as Coordinate[],
+            key,
+            center,
+            coordinates: groups.get(center) as Coordinate[],
         });
     }
     return result;
@@ -72,11 +76,13 @@ export const groupObjectsByLinearDistance = <T extends any>(
     }
 
     const result: Array<GroupedObjects<T>> = [];
-    for (const key of groups.keys()) {
+    for (const center of groups.keys()) {
 
+        const key: string = convertCoordinateToString(center);
         result.push({
-            center: key,
-            objects: groups.get(key) as T[],
+            key,
+            center,
+            objects: groups.get(center) as T[],
         });
     }
     return result;
