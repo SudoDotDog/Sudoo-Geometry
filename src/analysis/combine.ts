@@ -14,7 +14,15 @@ export type CombinedCoordinates = {
     readonly center: Coordinate;
 };
 
-export const combineCoordinatesByLinearDistance = (coordinates: Coordinate[]): CombinedCoordinates[] => {
+export type CombinedObjects<T> = {
+
+    readonly key: string;
+    readonly count: number;
+    readonly center: Coordinate;
+    readonly example: T;
+};
+
+export const combineExactlyCoordinates = (coordinates: Coordinate[]): CombinedCoordinates[] => {
 
     const combined: Map<string, CombinedCoordinates> = new Map();
 
@@ -41,12 +49,12 @@ export const combineCoordinatesByLinearDistance = (coordinates: Coordinate[]): C
     return [...combined.values()];
 };
 
-export const combineObjectsByLinearDistance = <T extends any>(
+export const combineExactlyObjects = <T extends any>(
     objects: T[],
     getCoordinateFunction: GetCoordinateFunction<T>,
-): CombinedCoordinates[] => {
+): Array<CombinedObjects<T>> => {
 
-    const combined: Map<string, CombinedCoordinates> = new Map();
+    const combined: Map<string, CombinedObjects<T>> = new Map();
 
     outer: for (const object of objects) {
 
@@ -54,7 +62,7 @@ export const combineObjectsByLinearDistance = <T extends any>(
         const key: string = convertCoordinateToString(coordinate);
         if (combined.has(key)) {
 
-            const value: CombinedCoordinates = combined.get(key) as CombinedCoordinates;
+            const value: CombinedObjects<T> = combined.get(key) as CombinedObjects<T>;
             combined.set(key, {
                 ...value,
                 count: value.count + 1,
@@ -66,6 +74,7 @@ export const combineObjectsByLinearDistance = <T extends any>(
             key,
             count: 1,
             center: coordinate,
+            example: object,
         });
     }
 
