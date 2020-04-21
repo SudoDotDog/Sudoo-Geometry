@@ -14,5 +14,6 @@ export * from "./calculate/radius";
 export * from "./declare/convert";
 export * from "./declare/declare";
 export * from "./geo-json/point";
+export * from "./geo-json/polygon";
 export * from "./sort/sort";
 
