@@ -1,7 +1,7 @@
 /**
  * @author WMXPY
  * @namespace Geometry_Analysis
- * @description Group
+ * @description Combine
  */
 
 import { calculateLinearDistance } from "../calculate/distance";
@@ -22,7 +22,7 @@ export type GroupedObjects<T> = {
     readonly objects: T[];
 };
 
-export const groupCoordinatesByLinearDistance = (coordinates: Coordinate[], range: number = 0.05): GroupedCoordinates[] => {
+export const combineCoordinatesByLinearDistance = (coordinates: Coordinate[], range: number = 0.05): GroupedCoordinates[] => {
 
     const groups: Map<Coordinate, Coordinate[]> = new Map();
 
@@ -53,7 +53,7 @@ export const groupCoordinatesByLinearDistance = (coordinates: Coordinate[], rang
     return result;
 };
 
-export const groupObjectsByLinearDistance = <T extends any>(
+export const combineObjectsByLinearDistance = <T extends any>(
     objects: T[],
     getCoordinateFunction: GetCoordinateFunction<T>,
     range: number = 0.05,
