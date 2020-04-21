@@ -8,21 +8,21 @@ import { calculateLinearDistance } from "../calculate/distance";
 import { convertCoordinateToString } from "../declare/convert";
 import { Coordinate, GetCoordinateFunction } from "../declare/declare";
 
-export type GroupedCoordinates = {
+export type CombinedCoordinates = {
 
     readonly key: string;
     readonly center: Coordinate;
     readonly coordinates: Coordinate[];
 };
 
-export type GroupedObjects<T> = {
+export type CombinedObjects<T> = {
 
     readonly key: string;
     readonly center: Coordinate;
     readonly objects: T[];
 };
 
-export const combineCoordinatesByLinearDistance = (coordinates: Coordinate[], range: number = 0.05): GroupedCoordinates[] => {
+export const combineCoordinatesByLinearDistance = (coordinates: Coordinate[], range: number = 0.05): CombinedCoordinates[] => {
 
     const groups: Map<Coordinate, Coordinate[]> = new Map();
 
@@ -40,7 +40,7 @@ export const combineCoordinatesByLinearDistance = (coordinates: Coordinate[], ra
         groups.set(coordinate, [coordinate]);
     }
 
-    const result: GroupedCoordinates[] = [];
+    const result: CombinedCoordinates[] = [];
     for (const center of groups.keys()) {
 
         const key: string = convertCoordinateToString(center);
@@ -57,7 +57,7 @@ export const combineObjectsByLinearDistance = <T extends any>(
     objects: T[],
     getCoordinateFunction: GetCoordinateFunction<T>,
     range: number = 0.05,
-): Array<GroupedObjects<T>> => {
+): Array<CombinedObjects<T>> => {
 
     const groups: Map<Coordinate, T[]> = new Map();
 
@@ -76,7 +76,7 @@ export const combineObjectsByLinearDistance = <T extends any>(
         groups.set(coordinate, [object]);
     }
 
-    const result: Array<GroupedObjects<T>> = [];
+    const result: Array<CombinedObjects<T>> = [];
     for (const center of groups.keys()) {
 
         const key: string = convertCoordinateToString(center);
