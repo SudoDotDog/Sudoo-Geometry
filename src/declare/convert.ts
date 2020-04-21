@@ -6,7 +6,7 @@
 
 import { Coordinate, LatLng, Tuple } from "./declare";
 
-export const covertCoordinateToLatLng = (coordinate: Coordinate): LatLng => {
+export const convertCoordinateToLatLng = (coordinate: Coordinate): LatLng => {
 
     return {
         lat: coordinate.latitude,
@@ -14,7 +14,7 @@ export const covertCoordinateToLatLng = (coordinate: Coordinate): LatLng => {
     };
 };
 
-export const covertLatLngToCoordinate = (latLng: LatLng): Coordinate => {
+export const convertLatLngToCoordinate = (latLng: LatLng): Coordinate => {
 
     return {
         latitude: latLng.lat,
@@ -22,17 +22,17 @@ export const covertLatLngToCoordinate = (latLng: LatLng): Coordinate => {
     };
 };
 
-export const covertCoordinateToTuple = (coordinate: Coordinate): Tuple => {
+export const convertCoordinateToTuple = (coordinate: Coordinate): Tuple => {
 
     return [coordinate.latitude, coordinate.latitude];
 };
 
-export const covertLatLngToTuple = (latLng: LatLng): Tuple => {
+export const convertLatLngToTuple = (latLng: LatLng): Tuple => {
 
     return [latLng.lat, latLng.lng];
 };
 
-export const covertTupleToLatLng = (tuple: Tuple): LatLng => {
+export const convertTupleToLatLng = (tuple: Tuple): LatLng => {
 
     return {
         lat: tuple[0],
@@ -40,7 +40,7 @@ export const covertTupleToLatLng = (tuple: Tuple): LatLng => {
     };
 };
 
-export const covertTupleToCoordinate = (tuple: Tuple): Coordinate => {
+export const convertTupleToCoordinate = (tuple: Tuple): Coordinate => {
 
     return {
         latitude: tuple[0],
@@ -73,10 +73,10 @@ export const convertCoordinateToString = (coordinate: Coordinate): string => {
 
 export const convertLatLngToString = (latLng: LatLng): string => {
 
-    return convertCoordinateToString(covertLatLngToCoordinate(latLng));
+    return convertCoordinateToString(convertLatLngToCoordinate(latLng));
 };
 
 export const convertTupleToString = (tuple: Tuple): string => {
 
-    return convertCoordinateToString(covertTupleToCoordinate(tuple));
+    return convertCoordinateToString(convertTupleToCoordinate(tuple));
 };

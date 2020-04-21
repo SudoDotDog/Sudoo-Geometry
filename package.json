@@ -1,6 +1,6 @@
 {
   "name": "@sudoo/geometry",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": ":globe_with_meridians: Geometry",
   "directories": {
     "doc": "docs"
