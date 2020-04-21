@@ -4,7 +4,6 @@
  * @description Combine
  */
 
-import { calculateLinearDistance } from "../calculate/distance";
 import { convertCoordinateToString } from "../declare/convert";
 import { Coordinate, GetCoordinateFunction } from "../declare/declare";
 
@@ -47,32 +46,28 @@ export const combineObjectsByLinearDistance = <T extends any>(
     getCoordinateFunction: GetCoordinateFunction<T>,
 ): CombinedCoordinates[] => {
 
-    const groups: Map<Coordinate, number> = new Map();
+    const combined: Map<string, CombinedCoordinates> = new Map();
 
     outer: for (const object of objects) {
 
         const coordinate: Coordinate = getCoordinateFunction(object);
-        for (const origin of groups.keys()) {
+        const key: string = convertCoordinateToString(coordinate);
+        if (combined.has(key)) {
 
-            const distance: number = calculateLinearDistance(coordinate, origin);
-            if (distance <= range) {
-
-                (groups.get(origin) as T[]).push(object);
-                continue outer;
-            }
+            const value: CombinedCoordinates = combined.get(key) as CombinedCoordinates;
+            combined.set(key, {
+                ...value,
+                count: value.count + 1,
+            });
+            continue outer;
         }
-        groups.set(coordinate, [object]);
-    }
 
-    const result: CombinedCoordinates[] = [];
-    for (const center of groups.keys()) {
-
-        const key: string = convertCoordinateToString(center);
-        result.push({
+        combined.set(key, {
             key,
-            center,
-            objects: groups.get(center) as T[],
+            count: 1,
+            center: coordinate,
         });
     }
-    return result;
+
+    return [...combined.values()];
 };
