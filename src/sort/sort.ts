@@ -5,7 +5,7 @@
  */
 
 import { calculateLinearDistance, calculateLinearDistanceWithCache } from "../calculate/distance";
-import { Coordinate, GetCoordinateFunction } from "../declare";
+import { Coordinate, GetCoordinateFunction } from "../declare/declare";
 
 export const sortCoordinateByLinearDistance = (start: Coordinate, destinations: Coordinate[]): Coordinate[] => {
 

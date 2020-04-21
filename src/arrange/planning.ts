@@ -6,7 +6,7 @@
 
 import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "../calculate/distance";
 import { calculateRadiusDistanceInMeter } from "../calculate/radius";
-import { Coordinate, GetCoordinateFunction } from "../declare";
+import { Coordinate, GetCoordinateFunction } from "../declare/declare";
 
 export type PlanningResult = {
 

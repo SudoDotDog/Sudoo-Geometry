@@ -4,7 +4,7 @@
  * @description Radius
  */
 
-import { Coordinate } from "../declare";
+import { Coordinate } from "../declare/declare";
 
 const ANGLE: number = 180;
 const EARTH_RADIUS: number = 6378.137;

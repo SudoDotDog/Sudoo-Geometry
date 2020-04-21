@@ -4,7 +4,7 @@
  * @description Distance
  */
 
-import { Coordinate, GetCoordinateFunction } from "../declare";
+import { Coordinate, GetCoordinateFunction } from "../declare/declare";
 
 type NearestCoordinateStatus = {
 

@@ -5,7 +5,7 @@
  */
 
 import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "../calculate/distance";
-import { Coordinate, GetCoordinateFunction } from "../declare";
+import { Coordinate, GetCoordinateFunction } from "../declare/declare";
 
 export const arrangeCoordinateByLinearDistance = (start: Coordinate, destinations: Coordinate[]): Coordinate[] => {
 
