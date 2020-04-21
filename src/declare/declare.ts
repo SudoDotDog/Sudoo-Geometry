@@ -31,6 +31,14 @@ export type Coordinate = {
     readonly longitude: number;
 };
 
+export type CoordinateRange = {
+
+    readonly maxLatitude: number;
+    readonly minLatitude: number;
+    readonly maxLongitude: number;
+    readonly minLongitude: number;
+};
+
 export type LatLng = {
 
     readonly lat: number;
