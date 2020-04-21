@@ -11,55 +11,43 @@ import { Coordinate, GetCoordinateFunction } from "../declare/declare";
 export type CombinedCoordinates = {
 
     readonly key: string;
+    readonly count: number;
     readonly center: Coordinate;
-    readonly coordinates: Coordinate[];
 };
 
-export type CombinedObjects<T> = {
+export const combineCoordinatesByLinearDistance = (coordinates: Coordinate[]): CombinedCoordinates[] => {
 
-    readonly key: string;
-    readonly center: Coordinate;
-    readonly objects: T[];
-};
-
-export const combineCoordinatesByLinearDistance = (coordinates: Coordinate[], range: number = 0.05): CombinedCoordinates[] => {
-
-    const groups: Map<Coordinate, Coordinate[]> = new Map();
+    const combined: Map<string, CombinedCoordinates> = new Map();
 
     outer: for (const coordinate of coordinates) {
 
-        for (const origin of groups.keys()) {
+        const key: string = convertCoordinateToString(coordinate);
+        if (combined.has(key)) {
 
-            const distance: number = calculateLinearDistance(coordinate, origin);
-            if (distance <= range) {
-
-                (groups.get(origin) as Coordinate[]).push(coordinate);
-                continue outer;
-            }
+            const value: CombinedCoordinates = combined.get(key) as CombinedCoordinates;
+            combined.set(key, {
+                ...value,
+                count: value.count + 1,
+            });
+            continue outer;
         }
-        groups.set(coordinate, [coordinate]);
-    }
 
-    const result: CombinedCoordinates[] = [];
-    for (const center of groups.keys()) {
-
-        const key: string = convertCoordinateToString(center);
-        result.push({
+        combined.set(key, {
             key,
-            center,
-            coordinates: groups.get(center) as Coordinate[],
+            count: 1,
+            center: coordinate,
         });
     }
-    return result;
+
+    return [...combined.values()];
 };
 
 export const combineObjectsByLinearDistance = <T extends any>(
     objects: T[],
     getCoordinateFunction: GetCoordinateFunction<T>,
-    range: number = 0.05,
-): Array<CombinedObjects<T>> => {
+): CombinedCoordinates[] => {
 
-    const groups: Map<Coordinate, T[]> = new Map();
+    const groups: Map<Coordinate, number> = new Map();
 
     outer: for (const object of objects) {
 
@@ -76,7 +64,7 @@ export const combineObjectsByLinearDistance = <T extends any>(
         groups.set(coordinate, [object]);
     }
 
-    const result: Array<CombinedObjects<T>> = [];
+    const result: CombinedCoordinates[] = [];
     for (const center of groups.keys()) {
 
         const key: string = convertCoordinateToString(center);
