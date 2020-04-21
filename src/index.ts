@@ -12,7 +12,6 @@ export * from "./calculate/distance";
 export * from "./calculate/radius";
 export * from "./declare/convert";
 export * from "./declare/declare";
-export * from "./geo-json/convert";
-export * from "./geo-json/declare";
+export * from "./geo-json/point";
 export * from "./sort/sort";
 
