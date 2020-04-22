@@ -4,7 +4,7 @@
  * @description Range
  */
 
-import { Coordinate, CoordinateRange, createCoordinate, createInfinityRange, GetCoordinateFunction } from "../declare/declare";
+import { Coordinate, CoordinateRange, createInfinityRange, GetCoordinateFunction } from "../declare/declare";
 
 export const getLinearRangeByCoordinates = (coordinates: Coordinate[]): CoordinateRange => {
 
@@ -24,7 +24,7 @@ export const getLinearRangeByCoordinates = (coordinates: Coordinate[]): Coordina
     return reduced;
 };
 
-export const getLinearCenterByObjects = <T extends any>(
+export const getLinearRangeByObjects = <T extends any>(
     objects: T[],
     getCoordinateFunction: GetCoordinateFunction<T>,
 ): CoordinateRange => {
