@@ -57,4 +57,8 @@ export type LatLng = {
 
 export type Tuple = [number, number];
 
+export type PolygonCoordinate = Coordinate[][];
+export type PolygonLatLng = LatLng[][];
+export type PolygonTuple = Tuple[][];
+
 export type GetCoordinateFunction<T extends any> = (object: T) => Coordinate;
