@@ -4,7 +4,7 @@
  * @description Polygon
  */
 
-import { convertCoordinateToTuple, convertTupleToCoordinate } from "../declare/convert";
+import { convertCoordinateToTuple, convertTupleToCoordinate, reverseTuple } from "../declare/convert";
 import { Coordinate, Tuple } from "../declare/declare";
 
 export type GeoJsonPolygon = {
@@ -30,4 +30,17 @@ export const convertGeoJsonPolygonToPolygons = (polygonGeoJson: GeoJsonPolygon):
         .map((polygon: Tuple[]) => polygon
             .map((each: Tuple) => convertTupleToCoordinate(each)),
         );
+};
+
+export const reverseGeoJsonPolygonTuples = (polygonGeoJson: GeoJsonPolygon): GeoJsonPolygon => {
+
+    const coordinates: Tuple[][] = polygonGeoJson.coordinates
+        .map((first: Tuple[]) => first
+            .map((second: Tuple) => reverseTuple(second)),
+        );
+
+    return {
+        type: 'Polygon',
+        coordinates,
+    };
 };

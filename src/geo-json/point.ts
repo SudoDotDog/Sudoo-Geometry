@@ -4,6 +4,7 @@
  * @description Point
  */
 
+import { reverseTuple } from "../declare/convert";
 import { Coordinate, Tuple } from "../declare/declare";
 
 export type GeoJsonPoint = {
@@ -28,5 +29,13 @@ export const convertGeoJsonPointToCoordinate = (point: GeoJsonPoint): Coordinate
     return {
         latitude,
         longitude,
+    };
+};
+
+export const reverseGeoJsonPointTuple = (point: GeoJsonPoint): GeoJsonPoint => {
+
+    return {
+        type: 'Point',
+        coordinates: reverseTuple(point.coordinates),
     };
 };
