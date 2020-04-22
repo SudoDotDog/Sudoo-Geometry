@@ -48,6 +48,11 @@ export const convertTupleToCoordinate = (tuple: Tuple): Coordinate => {
     };
 };
 
+export const reverseTuple = (tuple: Tuple): Tuple => {
+
+    return [tuple[1], tuple[0]];
+};
+
 export const convertLatitudeToString = (latitude: number): string => {
 
     if (latitude >= 0) {
