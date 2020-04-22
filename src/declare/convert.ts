@@ -24,7 +24,7 @@ export const convertLatLngToCoordinate = (latLng: LatLng): Coordinate => {
 
 export const convertCoordinateToTuple = (coordinate: Coordinate): Tuple => {
 
-    return [coordinate.latitude, coordinate.latitude];
+    return [coordinate.latitude, coordinate.longitude];
 };
 
 export const convertLatLngToTuple = (latLng: LatLng): Tuple => {
