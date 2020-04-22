@@ -25,6 +25,16 @@ export const createTuple = (latitude: number, longitude: number): Tuple => {
     return [latitude, longitude];
 };
 
+export const createInfinityRange = (): CoordinateRange => {
+
+    return {
+        maxLatitude: -Infinity,
+        minLatitude: Infinity,
+        maxLongitude: -Infinity,
+        minLongitude: Infinity,
+    };
+};
+
 export type Coordinate = {
 
     readonly latitude: number;

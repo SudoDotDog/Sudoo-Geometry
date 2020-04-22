@@ -4,7 +4,7 @@
  * @description Center
  */
 
-import { Coordinate, CoordinateRange, createCoordinate, GetCoordinateFunction } from "../declare/declare";
+import { Coordinate, CoordinateRange, createCoordinate, createInfinityRange, GetCoordinateFunction } from "../declare/declare";
 
 export const getLinearCenterByCoordinates = (coordinates: Coordinate[]): Coordinate | null => {
 
@@ -21,12 +21,8 @@ export const getLinearCenterByCoordinates = (coordinates: Coordinate[]): Coordin
                 maxLongitude: Math.max(previous.maxLongitude, current.longitude),
                 minLongitude: Math.min(previous.minLongitude, current.longitude),
             };
-        }, {
-            maxLatitude: -Infinity,
-            minLatitude: Infinity,
-            maxLongitude: -Infinity,
-            minLongitude: Infinity,
-        } as CoordinateRange,
+        },
+        createInfinityRange(),
     );
 
     const finalLatitude: number = (reduced.maxLatitude + reduced.minLatitude) / 2;
@@ -55,12 +51,8 @@ export const getLinearCenterByObjects = <T extends any>(
                 maxLongitude: Math.max(previous.maxLongitude, coordinate.longitude),
                 minLongitude: Math.min(previous.minLongitude, coordinate.longitude),
             };
-        }, {
-            maxLatitude: -Infinity,
-            minLatitude: Infinity,
-            maxLongitude: -Infinity,
-            minLongitude: Infinity,
-        } as CoordinateRange,
+        },
+        createInfinityRange(),
     );
 
     const finalLatitude: number = (reduced.maxLatitude + reduced.minLatitude) / 2;
