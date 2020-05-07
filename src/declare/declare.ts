@@ -61,6 +61,7 @@ export type PolygonCoordinate = Coordinate[][];
 export type MultiPolygonCoordinate = Coordinate[][][];
 
 export type PolygonLatLng = LatLng[][];
+export type MultiPolygonLatLng = LatLng[][][];
 export type PolygonTuple = Tuple[][];
 export type MultiPolygonTuple = Tuple[][][];
 

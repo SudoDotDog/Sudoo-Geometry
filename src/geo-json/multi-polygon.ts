@@ -5,21 +5,21 @@
  */
 
 import { convertCoordinateToTuple, reverseTuple } from "../declare/convert";
-import { Coordinate, MultiPolygonCoordinate, MultiPolygonTuple, Tuple } from "../declare/declare";
+import { Coordinate, MultiPolygonCoordinate, MultiPolygonTuple, PolygonCoordinate, PolygonTuple, Tuple } from "../declare/declare";
 import { convertMultiPolygonTupleToMultiPolygonCoordinate } from "../declare/polygon";
 
 export type GeoJsonMultiPolygon = {
 
     readonly type: "MultiPolygon";
-    readonly coordinates: Tuple[][][];
+    readonly coordinates: MultiPolygonTuple;
 };
 
-export const createGeoJsonMultiPolygon = (coordinates: Coordinate[][][]): GeoJsonMultiPolygon => {
+export const createGeoJsonMultiPolygon = (coordinates: MultiPolygonCoordinate): GeoJsonMultiPolygon => {
 
     return {
         type: 'MultiPolygon',
         coordinates: coordinates
-            .map((polygon: Coordinate[][]) => polygon
+            .map((polygon: PolygonCoordinate) => polygon
                 .map((each: Coordinate[]) => each
                     .map((coordinate: Coordinate) => convertCoordinateToTuple(coordinate)),
                 ),
@@ -39,8 +39,8 @@ export const convertGeoJsonMultiPolygonToMultiPolygonTuple = (multiPolygonGeoJso
 
 export const reverseGeoJsonMultiPolygonTuples = (multiPolygonGeoJson: GeoJsonMultiPolygon): GeoJsonMultiPolygon => {
 
-    const coordinates: Tuple[][][] = multiPolygonGeoJson.coordinates
-        .map((first: Tuple[][]) => first
+    const coordinates: MultiPolygonTuple = multiPolygonGeoJson.coordinates
+        .map((first: PolygonTuple) => first
             .map((second: Tuple[]) => second
                 .map((third: Tuple) => reverseTuple(third)),
             ),

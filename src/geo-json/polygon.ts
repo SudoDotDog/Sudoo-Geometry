@@ -11,10 +11,10 @@ import { convertPolygonTupleToPolygonCoordinate } from "../declare/polygon";
 export type GeoJsonPolygon = {
 
     readonly type: "Polygon";
-    readonly coordinates: Tuple[][];
+    readonly coordinates: PolygonTuple;
 };
 
-export const createGeoJsonPolygon = (coordinates: Coordinate[][]): GeoJsonPolygon => {
+export const createGeoJsonPolygon = (coordinates: PolygonCoordinate): GeoJsonPolygon => {
 
     return {
         type: 'Polygon',
@@ -37,7 +37,7 @@ export const convertGeoJsonPolygonToPolygonTuple = (polygonGeoJson: GeoJsonPolyg
 
 export const reverseGeoJsonPolygonTuples = (polygonGeoJson: GeoJsonPolygon): GeoJsonPolygon => {
 
-    const coordinates: Tuple[][] = polygonGeoJson.coordinates
+    const coordinates: PolygonTuple = polygonGeoJson.coordinates
         .map((first: Tuple[]) => first
             .map((second: Tuple) => reverseTuple(second)),
         );
