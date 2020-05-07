@@ -5,7 +5,7 @@
  */
 
 import { convertCoordinateToLatLng, convertCoordinateToTuple, convertTupleToCoordinate } from "./convert";
-import { Coordinate, PolygonCoordinate, PolygonLatLng, PolygonTuple, Tuple } from "./declare";
+import { Coordinate, MultiPolygonCoordinate, MultiPolygonTuple, PolygonCoordinate, PolygonLatLng, PolygonTuple, Tuple } from "./declare";
 
 export const convertPolygonCoordinateToPolygonLatLng = (polygon: PolygonCoordinate): PolygonLatLng => {
 
@@ -32,6 +32,18 @@ export const convertPolygonTupleToPolygonCoordinate = (polygon: PolygonTuple): P
     const result: PolygonCoordinate = polygon
         .map((first: Tuple[]) => first
             .map((second: Tuple) => convertTupleToCoordinate(second)),
+        );
+
+    return result;
+};
+
+export const convertMultiPolygonTupleToMultiPolygonCoordinate = (multiPolygon: MultiPolygonTuple): MultiPolygonCoordinate => {
+
+    const result: MultiPolygonCoordinate = multiPolygon
+        .map((first: Tuple[][]) => first
+            .map((second: Tuple[]) => second
+                .map((third: Tuple) => convertTupleToCoordinate(third)),
+            ),
         );
 
     return result;
