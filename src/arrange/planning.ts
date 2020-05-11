@@ -4,7 +4,7 @@
  * @description Planning
  */
 
-import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "../calculate/distance";
+import { getNearestCoordinateByLinearDistance, getNearestObjectByLinearDistance } from "../calculate/nearest";
 import { calculateRadiusDistanceInMeter } from "../calculate/radius";
 import { Coordinate, GetCoordinateFunction } from "../declare/declare";
 
