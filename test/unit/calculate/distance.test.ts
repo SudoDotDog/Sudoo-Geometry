@@ -7,7 +7,7 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { calculateLinearDistance, Coordinate, createCoordinate, getNearestCoordinateByLinearDistance } from "../../../src";
+import { calculateLinearDistance, Coordinate, createCoordinate } from "../../../src";
 
 describe('Given [Calculate-Distance] helper functions', (): void => {
 
@@ -41,18 +41,5 @@ describe('Given [Calculate-Distance] helper functions', (): void => {
         const distance: number = calculateLinearDistance(from, to);
 
         expect(distance).to.be.equal(5);
-    });
-
-    it('should be able to calculate nearest coordinate', (): void => {
-
-        const from: Coordinate = createCoordinate(0, 0);
-
-        const destinations: Coordinate[] = [
-            createCoordinate(-3, 4),
-            createCoordinate(4, 5),
-        ];
-        const target: Coordinate | null = getNearestCoordinateByLinearDistance(from, destinations);
-
-        expect(target).to.be.deep.equal(createCoordinate(-3, 4));
     });
 });
