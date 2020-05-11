@@ -10,6 +10,7 @@ export * from "./arrange/coordinate";
 export * from "./arrange/planning";
 export * from "./calculate/center";
 export * from "./calculate/distance";
+export * from "./calculate/nearest";
 export * from "./calculate/radius";
 export * from "./calculate/range";
 export * from "./declare/convert";
