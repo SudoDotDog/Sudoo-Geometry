@@ -16,6 +16,7 @@ export * from "./calculate/range";
 export * from "./declare/convert";
 export * from "./declare/declare";
 export * from "./declare/polygon";
+export * from "./garble/random";
 export * from "./geo-json/multi-polygon";
 export * from "./geo-json/point";
 export * from "./geo-json/polygon";
