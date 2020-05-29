@@ -4,15 +4,24 @@
  * @description Random
  */
 
-import { Coordinate } from "../declare/declare";
+import { Coordinate, createCoordinate } from "../declare/declare";
 
 export const randomGarbleLocation = (value: number, range: number): number => {
 
-    const diffrence: number = Math.random() * range;
-    return value;
+    const difference: number = Math.random() * range;
+    // tslint:disable-next-line: no-magic-numbers
+    const isNegative: boolean = Math.random() < 0.5;
+
+    if (isNegative) {
+        return value - difference;
+    }
+    return value + difference;
 };
 
-export const randomGarbleCoordinate = (original: Coordinate): Coordinate => {
+export const randomGarbleCoordinate = (original: Coordinate, range: number): Coordinate => {
 
-    return original;
+    const latitude: number = randomGarbleLocation(original.latitude, range);
+    const longitude: number = randomGarbleLocation(original.longitude, range);
+
+    return createCoordinate(latitude, longitude);
 };
