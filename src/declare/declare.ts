@@ -7,22 +7,22 @@
 export const createCoordinate = (latitude: number, longitude: number): Coordinate => {
 
     return {
-        latitude,
-        longitude,
+        latitude: Number(latitude),
+        longitude: Number(longitude),
     };
 };
 
 export const createLatLng = (latitude: number, longitude: number): LatLng => {
 
     return {
-        lat: latitude,
-        lng: longitude,
+        lat: Number(latitude),
+        lng: Number(longitude),
     };
 };
 
 export const createTuple = (latitude: number, longitude: number): Tuple => {
 
-    return [latitude, longitude];
+    return [Number(latitude), Number(longitude)];
 };
 
 export const createInfinityRange = (): CoordinateRange => {
