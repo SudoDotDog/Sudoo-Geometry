@@ -11,6 +11,7 @@ import { calculateLinearDistance, Coordinate, createCoordinate } from "../../../
 
 describe('Given [Calculate-Distance] helper functions', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('geometry-calculate-distance');
 
     it('should be able to calculate linear distance', (): void => {

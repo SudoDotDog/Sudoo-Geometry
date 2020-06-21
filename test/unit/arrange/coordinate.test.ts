@@ -12,6 +12,7 @@ import { createMockObject, MockObject } from "../../mock/object";
 
 describe('Given [Arrange-Coordinate] helper functions', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('geometry-arrange-coordinate');
 
     it('should be able to arrange coordinate by distance', (): void => {

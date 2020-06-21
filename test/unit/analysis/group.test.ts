@@ -12,6 +12,7 @@ import { createMockObject, MockObject } from "../../mock/object";
 
 describe('Given [Analysis-Group] helper functions', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('geometry-analysis-group');
 
     it('should be able to group coordinates', (): void => {

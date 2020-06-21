@@ -9,7 +9,7 @@ import { Coordinate, createCoordinate } from "../declare/declare";
 export const randomGarbleLocation = (value: number, range: number): number => {
 
     const difference: number = Math.random() * range;
-    // tslint:disable-next-line: no-magic-numbers
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
     const isNegative: boolean = Math.random() < 0.5;
 
     if (isNegative) {

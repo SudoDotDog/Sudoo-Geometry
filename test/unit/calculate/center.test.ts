@@ -12,6 +12,7 @@ import { createMockObject, MockObject } from "../../mock/object";
 
 describe('Given [Calculate-Center] helper functions', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('geometry-calculate-center');
 
     describe('Given [Linear-Center] related', (): void => {

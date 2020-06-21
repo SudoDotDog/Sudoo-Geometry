@@ -12,6 +12,7 @@ import { createMockObject, MockObject } from "../../mock/object";
 
 describe('Given [Sort-Sort] helper functions', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('geometry-sort-sort');
 
     it('should be able to sort by linear distance', (): void => {

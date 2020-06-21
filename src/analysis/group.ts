@@ -22,7 +22,11 @@ export type GroupedObjects<T> = {
     readonly objects: T[];
 };
 
-export const groupCoordinatesByLinearDistance = (coordinates: Coordinate[], range: number = 0.05): GroupedCoordinates[] => {
+export const groupCoordinatesByLinearDistance = (
+    coordinates: Coordinate[],
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+    range: number = 0.05,
+): GroupedCoordinates[] => {
 
     const groups: Map<Coordinate, Coordinate[]> = new Map();
 
@@ -56,6 +60,7 @@ export const groupCoordinatesByLinearDistance = (coordinates: Coordinate[], rang
 export const groupObjectsByLinearDistance = <T extends any>(
     objects: T[],
     getCoordinateFunction: GetCoordinateFunction<T>,
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
     range: number = 0.05,
 ): Array<GroupedObjects<T>> => {
 

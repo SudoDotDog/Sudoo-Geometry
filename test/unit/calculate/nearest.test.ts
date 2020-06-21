@@ -11,6 +11,7 @@ import { Coordinate, createCoordinate, getNearestCoordinateByLinearDistance } fr
 
 describe('Given [Calculate-Nearest] helper functions', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('geometry-calculate-nearest');
 
     it('should be able to calculate nearest coordinate', (): void => {
