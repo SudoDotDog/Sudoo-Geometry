@@ -3,10 +3,12 @@
         "RMRF",
         "WMXPY",
         "codecov",
+        "mocharc",
         "sudoo",
         "triforce",
         "tshook"
     ],
-    "tslint.configFile": "typescript/tslint.json",
-    "files.eol": "\n"
+    "eslint.options": {
+        "configFile": "./typescript/.eslintrc.json"
+    }
 }
