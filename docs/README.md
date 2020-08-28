@@ -6,3 +6,11 @@
 [![downloads](https://img.shields.io/npm/dm/@sudoo/geometry.svg)](https://www.npmjs.com/package/@sudoo/geometry)
 
 :globe_with_meridians: Geometry
+
+## Install
+
+```sh
+yarn add @sudoo/geometry
+# Or
+npm install @sudoo/geometry --save
+```
