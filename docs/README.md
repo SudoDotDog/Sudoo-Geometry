@@ -26,3 +26,14 @@ const coordinate: Coordinate = {
     longitude: // number
 };
 ```
+
+Some utility methods are included, for example, random location generation.
+
+```ts
+import { Coordinate, randomGarbleCoordinate } from "@sudoo/geometry";
+const original: Coordinate = {
+    latitude: // number
+    longitude: // number
+};
+const coordinate: Coordinate = randomGarbleCoordinate(original, 0.5);
+```
