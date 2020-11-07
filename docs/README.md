@@ -37,3 +37,5 @@ const original: Coordinate = {
 };
 const coordinate: Coordinate = randomGarbleCoordinate(original, 0.5);
 ```
+
+This document is working in progress, see source code for more usage information.
