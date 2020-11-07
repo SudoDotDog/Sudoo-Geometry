@@ -14,3 +14,15 @@ yarn add @sudoo/geometry
 # Or
 npm install @sudoo/geometry --save
 ```
+
+## Usage
+
+This package normally used with other `sudoo` packages. See [SudoDotDog](//sudo.dog) for the complete package index.
+
+```ts
+import { Coordinate } from "@sudoo/geometry";
+const coordinate: Coordinate = {
+    latitude: // number
+    longitude: // number
+};
+```
